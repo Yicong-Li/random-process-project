@@ -120,80 +120,16 @@ plot(timeVector,xCorrectedUKF(:,3)-2*squeeze(xCorrectedstd(:,3,3)), '--b','Handl
 plot(timeVector(end)+(1:future_days), xPredictedUKF(:,3), 'k', 'LineWidth', 2)
 plot(timeVector(end)+(1:future_days), xPredictedUKF(:,3)+2*squeeze(xPredictedstd(:,3,3)), '--k','HandleVisibility','off')
 plot(timeVector(end)+(1:future_days), xPredictedUKF(:,3)-2*squeeze(xPredictedstd(:,3,3)), '--k','HandleVisibility','off')
-hold on
+hold off
 plot(timeVector,yMeas, 'o', 'Color', [0.6,0.6,0.6]);
 [mx, imx] = max([xCorrectedUKF(:,3); xPredictedUKF(:,3)]);
-hold on
 plot([imx, imx], [yMeas(1), mx], 'r', 'LineWidth', 2)
-hold off
-ds = [day_label,day_label_future];
-legend({'Corrected'; 'Predicted'; 'Observed'; ['Max ' num2str(mx,3) ' ' ds{imx}]}, 'Location', 'NorthWest')
 ylabel(labels{3});
 axis tight
 grid on
 xlabel('Days since first reported infections')
 set(gca, 'FontSize', 12)
 set(gca, 'XTick', (1:2:timeVector(end)+future_days))
-
-
-figure(4)
-plot(timeVector,xCorrectedUKF(:,4), 'b', 'LineWidth', 2);
-hold on
-plot(timeVector,xCorrectedUKF(:,4)+2*squeeze(xCorrectedstd(:,4,4)), '--b','HandleVisibility','off')
-plot(timeVector,xCorrectedUKF(:,4)-2*squeeze(xCorrectedstd(:,4,4)), '--b','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,4), 'k', 'LineWidth', 2)
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,4)+2*squeeze(xPredictedstd(:,4,4)), '--k','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,4)-2*squeeze(xPredictedstd(:,4,4)), '--k','HandleVisibility','off')
-hold off
-ylabel(labels{4});
-axis tight
-grid on
-xlabel('Days since first reported infections')
-set(gca, 'FontSize', 12)
-set(gca, 'XTick', (1:2:timeVector(end)+future_days))
-
-
-figure(5)
-plot(timeVector,xCorrectedUKF(:,5), 'b', 'LineWidth', 2);
-hold on
-plot(timeVector,xCorrectedUKF(:,5)+2*squeeze(xCorrectedstd(:,5,5)), '--b','HandleVisibility','off')
-plot(timeVector,xCorrectedUKF(:,5)-2*squeeze(xCorrectedstd(:,5,5)), '--b','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,5), 'k', 'LineWidth', 2)
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,5)+2*squeeze(xPredictedstd(:,5,5)), '--k','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,5)-2*squeeze(xPredictedstd(:,5,5)), '--k','HandleVisibility','off')
-hold off
-ylabel(labels{5});
-axis tight
-grid on
-xlabel('')
-set(gca, 'FontSize', 12)
-set(gca, 'XTick', (1:2:timeVector(end)+future_days))
-title(['Last estimate of beta = ' num2str(xCorrectedUKF(end,5),3) ', std = ' num2str(squeeze(xCorrectedstd(end,5,5)),3)])
-
-
-figure(6)
-plot(timeVector,xCorrectedUKF(:,6), 'b', 'LineWidth', 2);
-hold on
-plot(timeVector,xCorrectedUKF(:,6)+2*squeeze(xCorrectedstd(:,6,6)), '--b','HandleVisibility','off')
-plot(timeVector,xCorrectedUKF(:,6)-2*squeeze(xCorrectedstd(:,6,6)), '--b','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,6), 'k', 'LineWidth', 2)
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,6)+2*squeeze(xPredictedstd(:,6,6)), '--k','HandleVisibility','off')
-plot(timeVector(end)+(1:future_days), xPredictedUKF(:,6)-2*squeeze(xPredictedstd(:,6,6)), '--k','HandleVisibility','off')
-hold off
-ylabel(labels{6});
-axis tight
-grid on
-xlabel('')
-set(gca, 'FontSize', 12)
-set(gca, 'XTick', (1:2:timeVector(end)+future_days))
-set(gca, 'XTickLabel', ds(1:2:end))
-xtickangle(90)
-title(['Last estimate of gamma = ' num2str(xCorrectedUKF(end,6),3) ', std = ' num2str(squeeze(xCorrectedstd(end,6,6)),3)])
-
-
-
-
-
 
 
 
